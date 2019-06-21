@@ -18,6 +18,7 @@ func _input(event):
 		flip = 0
 	if (event.is_action_pressed("move_up")):
 		anim = "run_up"
+		
 	if (event.is_action_pressed("move_down")):
 		anim = "run_down"
 	if (event.is_action_pressed("move_right")) or (event.is_action_pressed("move_left")):
