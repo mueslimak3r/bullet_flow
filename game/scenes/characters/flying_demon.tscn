@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/characters/flying_demon.gd" type="Script" id=1]
 [ext_resource path="res://art/gothicvania/flying_demon/demon-idle.png" type="Texture" id=2]
@@ -99,10 +99,12 @@ animations = [ {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "attack",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=19]
+
+[sub_resource type="CapsuleShape2D" id=20]
 
 [node name="flying_demon" type="Node2D"]
 script = ExtResource( 1 )
@@ -119,3 +121,13 @@ shape = SubResource( 19 )
 
 [node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D"]
 cast_to = Vector2( -100, 100 )
+
+[node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
+position = Vector2( 14.6509, 8.93346 )
+scale = Vector2( 3, 1.5 )
+shape = SubResource( 20 )
+[connection signal="body_entered" from="KinematicBody2D/Area2D" to="." method="_on_Area2D_body_entered"]

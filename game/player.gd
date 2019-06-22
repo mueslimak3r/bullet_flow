@@ -7,30 +7,37 @@ extends Node2D
 var anim = "default"
 var flip = 0
 var velocity = Vector2()
+var health = 100
+var player = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CanvasLayer.offset = get_viewport().size / 2
+	var node = $Camera2D
+	remove_child(node)
+	$KinematicBody2D.add_child(node)
 	pass # Replace with function body.
 
 func get_input():
 	velocity = Vector2()
-	if (Input.is_action_pressed("move_left")):
-		flip = 1
-	else:
-		flip = 0
-	if (Input.is_action_pressed("move_up")):
-		anim = "run_up"
-		velocity.y -= 1
-	if (Input.is_action_pressed("move_down")):
-		anim = "run_down"
-		velocity.y += 1
-	if (Input.is_action_pressed("move_right")) or (Input.is_action_pressed("move_left")):
-		anim = "run_side"
-	if (Input.is_action_pressed("move_right")):
-		velocity.x += 1
-	if (Input.is_action_pressed("move_left")):
-		velocity.x -= 1
-	velocity = velocity.normalized() * 200
+	if (health > 0):
+		if (Input.is_action_pressed("move_left")):
+			flip = 1
+		else:
+			flip = 0
+		if (Input.is_action_pressed("move_up")):
+			anim = "run_up"
+			velocity.y -= 1
+		if (Input.is_action_pressed("move_down")):
+			anim = "run_down"
+			velocity.y += 1
+		if (Input.is_action_pressed("move_right")) or (Input.is_action_pressed("move_left")):
+			anim = "run_side"
+		if (Input.is_action_pressed("move_right")):
+			velocity.x += 1
+		if (Input.is_action_pressed("move_left")):
+			velocity.x -= 1
+		velocity = velocity.normalized() * 200
 	pass
 
 func _input(event):
@@ -49,6 +56,9 @@ func _process(delta):
 	else:
 		$KinematicBody2D/AnimatedSprite.flip_h = false
 	if (velocity.x == 0 && velocity.y == 0):
-		anim = "default"
+		if (health > 0):
+			anim = "default"
+		else:
+			anim = "die"
 	$KinematicBody2D/AnimatedSprite.play(anim)
 	velocity = $KinematicBody2D.move_and_slide(velocity)
