@@ -4,10 +4,10 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var bl_tex = load("res://art/pipe/bottom_left/pipe_corner_bottom_left.png")
 var br_tex = load("res://art/pipe/bottom_right/pipe_corner_bottom_right.png")
-var tl_tex = load("res://art/pipe/top_left/pipe_corner_top_left.png")
+var bl_tex = load("res://art/pipe/bottom_left/pipe_corner_bottom_left.png")
 var tr_tex = load("res://art/pipe/top_right/pipe_corner_top_right.png")
+var tl_tex = load("res://art/pipe/top_left/pipe_corner_top_left.png")
 var h_tex = load("res://art/pipe/horizontal/pipe_horizontal.png")
 var v_tex = load("res://art/pipe/vertical/pipe_vertical.png")
 
@@ -36,8 +36,7 @@ func _process(delta):
 		rotate(delta)
 
 func _on_Area2D_body_entered(body):
-	if ("player" in body.get_parent()):
+	if ("player" in body.get_parent() and owned != 1):
 		body.get_parent().pieces[type] += 1
 		print("PLAYER PICKED UP " + type + " PIPE! TOTAL: " + str(body.get_parent().pieces[type]))
 		queue_free()
-	print("PICK UP 2")

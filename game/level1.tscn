@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://env.tres" type="TileSet" id=1]
 [ext_resource path="res://dungeon_master.gd" type="Script" id=2]
@@ -6,8 +6,14 @@
 [ext_resource path="res://art/legend of faune files/Sprites/HUD/PNG/hud-bg.png" type="Texture" id=4]
 [ext_resource path="res://art/legend of faune files/Sprites/HUD/PNG/stamina-bar.png" type="Texture" id=5]
 [ext_resource path="res://healthbar.gd" type="Script" id=6]
-[ext_resource path="res://scenes/characters/flying_demon.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sound/A Serious Engagment!.ogg" type="AudioStream" id=8]
+[ext_resource path="res://art/pipe/horizontal/pipe_horizontal.png" type="Texture" id=7]
+[ext_resource path="res://art/pipe/vertical/pipe_vertical.png" type="Texture" id=8]
+[ext_resource path="res://art/pipe/bottom_left/pipe_corner_bottom_left.png" type="Texture" id=9]
+[ext_resource path="res://art/pipe/bottom_right/pipe_corner_bottom_right.png" type="Texture" id=10]
+[ext_resource path="res://art/pipe/top_left/pipe_corner_top_left.png" type="Texture" id=11]
+[ext_resource path="res://art/pipe/top_right/pipe_corner_top_right.png" type="Texture" id=12]
+[ext_resource path="res://scenes/characters/flying_demon.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sound/A Serious Engagment!.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.171875, 1, 0, 1, 0, 0.503906, 0.00787354, 1 )
@@ -46,7 +52,9 @@ texture = ExtResource( 4 )
 position = Vector2( 0, 278.105 )
 texture = ExtResource( 5 )
 
-[node name="TextureProgress" type="TextureProgress" parent="player/CanvasLayer/Sprite"]
+[node name="inventory" type="Sprite" parent="player/CanvasLayer/Sprite"]
+
+[node name="TextureProgress" type="TextureProgress" parent="player/CanvasLayer/Sprite/inventory"]
 margin_left = -41.0
 margin_top = 275.0
 margin_right = 39.0
@@ -56,9 +64,105 @@ rect_scale = Vector2( 1, 5 )
 texture_progress = SubResource( 2 )
 script = ExtResource( 6 )
 
-[node name="flying_demon" parent="." instance=ExtResource( 7 )]
+[node name="TextureRect" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -500.0
+margin_top = -300.0
+margin_right = -372.0
+margin_bottom = -172.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 7 )
+
+[node name="TextureRect2" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -450.0
+margin_top = -300.0
+margin_right = -322.0
+margin_bottom = -172.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 8 )
+
+[node name="TextureRect3" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -400.0
+margin_top = -300.0
+margin_right = -272.0
+margin_bottom = -172.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+
+[node name="TextureRect4" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -360.0
+margin_top = -300.0
+margin_right = -232.0
+margin_bottom = -172.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 10 )
+
+[node name="TextureRect5" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -300.0
+margin_top = -293.0
+margin_right = -172.0
+margin_bottom = -165.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 11 )
+
+[node name="TextureRect6" type="TextureRect" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -260.0
+margin_top = -293.0
+margin_right = -132.0
+margin_bottom = -165.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 12 )
+
+[node name="horiz" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -494.0
+margin_top = -250.0
+margin_right = -473.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="vert" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -445.0
+margin_top = -250.0
+margin_right = -424.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="bl" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -395.0
+margin_top = -250.0
+margin_right = -374.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="br" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -350.0
+margin_top = -250.0
+margin_right = -329.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="tl" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -302.0
+margin_top = -250.0
+margin_right = -281.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="tr" type="Label" parent="player/CanvasLayer/Sprite/inventory"]
+margin_left = -250.0
+margin_top = -250.0
+margin_right = -229.0
+margin_bottom = -236.0
+text = "0"
+align = 1
+
+[node name="flying_demon" parent="." instance=ExtResource( 13 )]
 position = Vector2( 128.448, -85.8645 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 14 )
 autoplay = true
