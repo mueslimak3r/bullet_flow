@@ -6,7 +6,7 @@ extends TileMap
 
 var map = []
 
-var mapsize = 50
+var mapsize = 24
 
 var wave_timer = Timer.new()
 var wave_size = 1
@@ -18,12 +18,20 @@ func _ready():
 	wave_timer.set_wait_time(wave_delay)
 	add_child(wave_timer)
 	wave_timer.start()
+	
+	fill_map()
 	gen_square_room()
 	spawn_source()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func fill_map():
+	for n in range(0,255):
+		for m in range(0,255):
+			set_cell(n - 127, m - 127, 3)
+
 func spawn_wave():
 	var mob = load("res://scenes/characters/flying_demon.tscn")
 	for i in wave_size:
@@ -41,9 +49,9 @@ func spawn_wave():
 func spawn_source():
 	var source = load("res://source.tscn")
 	var inst = source.instance()
-	add_child(inst)
 	var source_pos_x = 0
 	var source_pos_y = 0
+	add_child(inst)
 	randomize()
 	while ((source_pos_x % mapsize) == 0):
 		source_pos_x = randi() % mapsize

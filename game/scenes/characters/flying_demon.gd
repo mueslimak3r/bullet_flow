@@ -12,6 +12,15 @@ var damage = 10
 var attack_timer = Timer.new()
 var attack_speed = 1
 var attack_range = 100
+var loot_chance = 5
+var loot_table = [
+	"horizontal",
+	"vertical",
+	"bottom_left",
+	"bottom_right",
+	"top_left",
+	"top_right"
+]
 
 var anim = "idle"
 
@@ -28,7 +37,6 @@ func attack():
 	if ((pos - $KinematicBody2D.global_position).length() <= attack_range && player_node.get_parent().health > 0):
 		player_node.get_parent().health -= 15
 		anim = "attack"
-		print("REGISTER")
 	else:
 		anim = "idle"
 	pass
@@ -44,14 +52,22 @@ func _process(delta):
 	$KinematicBody2D/AnimatedSprite.play(anim)
 	seek_player()
 	if (health <= 0):
+		drop_pipe()
 		queue_free()
 	if (global_position.x < get_parent().find_node("player").find_node("KinematicBody2D").position.x):
 		$KinematicBody2D/AnimatedSprite.flip_h = true
 	else:
 		$KinematicBody2D/AnimatedSprite.flip_h = false
 
+func drop_pipe():
+	randomize()
+	if (randi() % loot_chance == 0):
+		var pipe = load("res://pipe_piece.tscn")
+		var inst = pipe.instance()
+		inst.type = loot_table[randi() % 5]
+		get_parent().add_child(inst)
+
 func _on_Area2D_body_entered(body):
 	if (body and "damage" in body.get_parent()):
 		health -= body.get_parent().damage
-		print("HEALTH: " + str(health))
 	pass # Replace with function body.

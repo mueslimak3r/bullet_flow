@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://env.tres" type="TileSet" id=1]
 [ext_resource path="res://dungeon_master.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://art/legend of faune files/Sprites/HUD/PNG/stamina-bar.png" type="Texture" id=5]
 [ext_resource path="res://healthbar.gd" type="Script" id=6]
 [ext_resource path="res://scenes/characters/flying_demon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sound/A Serious Engagment!.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.171875, 1, 0, 1, 0, 0.503906, 0.00787354, 1 )
@@ -58,4 +59,6 @@ script = ExtResource( 6 )
 [node name="flying_demon" parent="." instance=ExtResource( 7 )]
 position = Vector2( 128.448, -85.8645 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true

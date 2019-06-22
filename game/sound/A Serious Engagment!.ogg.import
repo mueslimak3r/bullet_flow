@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A Serious Engagment!.ogg-09b6314a327a9a0f54a89955ad1d62a8.oggstr"
+
+[deps]
+
+source_file="res://sound/A Serious Engagment!.ogg"
+dest_files=[ "res://.import/A Serious Engagment!.ogg-09b6314a327a9a0f54a89955ad1d62a8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

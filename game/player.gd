@@ -9,6 +9,7 @@ var flip = 0
 var velocity = Vector2()
 var health = 100
 var player = true
+var pieces = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,12 @@ func _ready():
 	var node = $Camera2D
 	remove_child(node)
 	$KinematicBody2D.add_child(node)
-	pass # Replace with function body.
+	pieces.horizontal = 0
+	pieces.top_left = 0
+	pieces.top_right = 0
+	pieces.bottom_left = 0
+	pieces.bottom_right = 0
+	pieces.vertical = 0
 
 func get_input():
 	velocity = Vector2()
@@ -38,7 +44,6 @@ func get_input():
 		if (Input.is_action_pressed("move_left")):
 			velocity.x -= 1
 		velocity = velocity.normalized() * 200
-	pass
 
 func _input(event):
 	if (event.is_action_pressed("fire")):
