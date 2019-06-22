@@ -34,7 +34,12 @@ func get_input():
 	pass
 
 func _input(event):
-	pass
+	if (event.is_action_pressed("fire")):
+		var proj = load("res://scenes/projectile.tscn")
+		var inst = proj.instance()
+		get_parent().add_child(inst)
+		inst.position = $KinematicBody2D.position
+		inst.targetpos = get_global_mouse_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
