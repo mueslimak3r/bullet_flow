@@ -7,6 +7,7 @@ extends TileMap
 var map = []
 
 var mapsize = 30
+var offset = Vector2()
 
 var wave_timer = Timer.new()
 var wave_size = 1
@@ -19,7 +20,7 @@ func _ready() :
 	add_child(wave_timer)
 	wave_timer.start()
 	
-	fill_map()
+	#fill_map()
 	gen_square_room()
 	spawn_source()
 
@@ -37,8 +38,8 @@ func spawn_wave():
 	for i in wave_size:
 		var inst = mob.instance()
 		get_parent().add_child(inst)
-		var source_pos_x = 0
-		var source_pos_y = 0
+		var source_pos_x = int(offset.x)
+		var source_pos_y = int(offset.y)
 		randomize()
 		while ((source_pos_x % mapsize) == 0):
 			source_pos_x = randi() % mapsize
@@ -49,8 +50,8 @@ func spawn_wave():
 func spawn_source():
 	var source = load("res://source.tscn")
 	var inst = source.instance()
-	var source_pos_x = 0
-	var source_pos_y = 0
+	var source_pos_x = int(offset.x)
+	var source_pos_y = int(offset.y)
 	add_child(inst)
 	randomize()
 	while ((source_pos_y % mapsize) == 0):
@@ -70,6 +71,6 @@ func gen_square_room():
 	for n in range(0, mapsize - 1):
 		for m in range(0, mapsize - 1):
 			if map[n][m] == 0:
-				set_cell(n - (mapsize / 2), m - (mapsize / 2), 2)
+				set_cell(n - int(offset.x), m - int(offset.y), 2)
 			else:
-				set_cell(n - (mapsize / 2), m - (mapsize / 2), 3)
+				set_cell(n - int(offset.x), m - int(offset.y), 3)
