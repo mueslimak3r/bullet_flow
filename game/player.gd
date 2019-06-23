@@ -83,8 +83,9 @@ func _input(event):
 				var inst = pipe.instance()
 				inst.owned = 1
 				inst.type = selected_pipe
+				inst.ghost = 0
 				get_parent().add_child(inst)
-				inst.position = get_parent().find_node(in_room).find_node("BG").map_to_world(get_parent().find_node(in_room).find_node("BG").world_to_map(get_global_mouse_position()))
+				inst.position = get_parent().get_node("room1").find_node("BG").map_to_world(get_parent().get_node("room1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
 				self.pieces[selected_pipe] -= 1
 	if (event is InputEventMouseMotion and state == "build"):
 		pass
@@ -104,3 +105,11 @@ func _process(delta):
 			anim = "die"
 	$KinematicBody2D/AnimatedSprite.play(anim)
 	velocity = $KinematicBody2D.move_and_slide(velocity)
+	var pipenode = get_parent().find_node("ghost_pipe")
+	if (state == "build" and pipenode):
+		pipenode.type = selected_pipe
+		pipenode.update_texture()
+		pipenode.visible = true
+	else:
+		if (pipenode):
+			pipenode.visible = false

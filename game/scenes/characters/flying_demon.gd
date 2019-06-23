@@ -65,6 +65,7 @@ func drop_pipe():
 		var pipe = load("res://pipe_piece.tscn")
 		var inst = pipe.instance()
 		inst.type = loot_table[randi() % 5]
+		inst.ghost = 0
 		get_parent().add_child(inst)
 		inst.position = $KinematicBody2D.global_position
 
