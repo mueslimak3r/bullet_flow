@@ -37,6 +37,8 @@ func fill_map():
 			set_cell(n - 127, m - 127, 3)
 
 func spawn_wave():
+	if get_parent().get_parent().find_node("player").in_room != get_parent().get_name() :
+		return
 	for i in wave_size:
 		randomize()
 		var mob = load(mobs[randi() % mobs.size()])
@@ -54,13 +56,19 @@ func spawn_wave():
 func spawn_source():
 	var source = load("res://source.tscn")
 	var inst = source.instance()
+	inst.map_x = mapsize
+	inst.map_y = mapsize
 	var source_pos_x = int(offset.x)
 	var source_pos_y = int(offset.y)
 	add_child(inst)
 	randomize()
 	while ((source_pos_y % mapsize) == 0):
 		source_pos_y = randi() % mapsize
+	inst.source_x = source_pos_x
+	inst.source_y = source_pos_y
 	inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
+	get_parent().get_node("pipe_in").global_position = inst.get_global_position()
+	inst.start()
 
 func gen_square_room():
 	map.resize(mapsize)

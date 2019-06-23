@@ -79,13 +79,16 @@ func _input(event):
 			inst.targetpos = get_global_mouse_position()
 		if (state == "build" and health > 0):
 			if (self.pieces[selected_pipe] > 0):
+				var _position = get_parent().get_node("level1").find_node("BG").map_to_world(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
+				if !(get_parent().get_node(in_room).get_node("pipe_in").connect_pipe(_position)) :
+					return
 				var pipe = load("res://pipe_piece.tscn")
 				var inst = pipe.instance()
 				inst.owned = 1
 				inst.type = selected_pipe
 				inst.ghost = 0
 				get_parent().add_child(inst)
-				inst.position = get_parent().get_node("level1").find_node("BG").map_to_world(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
+				inst.position = _position
 				self.pieces[selected_pipe] -= 1
 	if (event is InputEventMouseMotion and state == "build"):
 		pass

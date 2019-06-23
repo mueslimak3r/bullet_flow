@@ -99,7 +99,10 @@ position = Vector2( -4.05186, -27.2487 )
 shape = SubResource( 14 )
 
 [node name="Area2D" type="Area2D" parent="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Area2D"]
 position = Vector2( -0.00857842, -27.9299 )
 shape = SubResource( 15 )
+[connection signal="body_entered" from="KinematicBody2D/Area2D" to="." method="_on_Area2D_body_entered"]
