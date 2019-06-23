@@ -38,7 +38,7 @@ func fill_map():
 
 func spawn_wave():
 	var mob = load("res://scenes/characters/flying_demon.tscn")
-	for i in wave_size:
+	for i in 0:
 		var inst = mob.instance()
 		get_parent().add_child(inst)
 		var source_pos_x = int(offset.x)
@@ -59,7 +59,7 @@ func spawn_source():
 	randomize()
 	while ((source_pos_y % mapsize) == 0):
 		source_pos_y = randi() % mapsize
-	inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
+	inst.global_position = map_to_world(Vector2(source_pos_x - (mapsize / 2), source_pos_y - (mapsize / 2)))
 
 func gen_square_room():
 	map.resize(mapsize)
@@ -79,18 +79,19 @@ func gen_square_room():
 				set_cell(n - int(offset.x), m - int(offset.y), 3)
 
 func link_neighbors():
-	for room in 0:
+	for room in neighbors:
 		var curpos = Vector2()
-		var os1 = 1
-		var os2 = 1
-		if (room.offset.x < offset.x):
-			os1 = -1
-		if (room.offset.y < offset.y):
-			os2 = -1
-		while (room.offset.x * os1 > offset.x + curpos.x):
-			set_cell(offset.x + curpos.x, -offset.y, 3)
-			curpos.x += 1
-		while (room.offset.y * os2 > offset.y + curpos.y):
-			set_cell(offset.x + (curpos.x * os2), -(offset.y + (curpos.y * os2)), 3)
-			curpos.y += 1
+		while (curpos.x + offset.x != room.offset.x):
+			if (curpos.x + offset.x < room.offset.x):
+				curpos.x += 1
+			if (curpos.x + offset.x > room.offset.x):
+				curpos.x -= 1
+			set_cell(curpos.x + (room.offset.x - offset.x), curpos.y + (room.offset.y - offset.y), 3)
+		while (curpos.y + offset.y != room.offset.y):
+			if (curpos.y + offset.y < room.offset.y):
+				curpos.y += 1
+			if (curpos.y + offset.y > room.offset.y):
+				curpos.y -= 1
+			set_cell(curpos.x + (room.offset.x - offset.x), curpos.y + (room.offset.y - offset.y), 3)
+			pass
 		print("HI")

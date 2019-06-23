@@ -22,15 +22,18 @@ func _ready():
 	room.size = (randi() % 30) + 30
 	room.offset = Vector2(room.size / 2, room.size / 2)
 	room.neighbors = []
+	room.weight = 1
 	rooms.push_front(room)
 	var level1 = lvl_asset.instance()
 	var i = 0
 	while (rooms.size() > 0):
+		print("ROOM")
+		var offsets_list = []
 		for n in range(0, 3):
-			if randi() % 3 == 0:
+			if randi() % rooms[0].weight == 0:
 				room = {}
 				randomize()
-				room.size = 30
+				room.size = (randi() % 30) + 30
 				var neg = Vector2()
 				if (randi() % 2 == 1):
 					neg.x = 1
@@ -40,10 +43,20 @@ func _ready():
 					neg.y = 1
 				else:
 					neg.y = -1
-				room.offset = rooms[0].offset + Vector2((rooms[0].size * 2) * neg.x, (rooms[0].size * 2) * neg.y)
-				room.neighbors = []
-				room.neighbors.push_back(rooms[0])
-				rooms.push_back(room)
+				room.offset = rooms[0].offset + Vector2((room.size * 2) * neg.x, (room.size * 2) * neg.y)
+				var exist = false
+				for n in offsets_list:
+					if room.offset.x == n.x and room.offset.y == n.y:
+						exist = true
+				if (exist == false):
+					offsets_list.push_back(room.offset)
+					room.neighbors = []
+					room.weight = rooms[0].weight * 2
+					room.neighbors.push_back(rooms[0])
+					rooms[0].neighbors.push_back(room)
+					#if (i == 0):
+						#rooms[0].neighbors.push_back(room)
+					rooms.push_back(room)
 		var new_level = lvl_asset.instance()
 		new_level.get_node("BG").offset = rooms[0].offset
 		new_level.get_node("BG").mapsize = rooms[0].size
