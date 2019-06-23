@@ -85,7 +85,7 @@ func _input(event):
 				inst.type = selected_pipe
 				inst.ghost = 0
 				get_parent().add_child(inst)
-				inst.position = get_parent().get_node("room1").find_node("BG").map_to_world(get_parent().get_node("room1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
+				inst.position = get_parent().get_node("level1").find_node("BG").map_to_world(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
 				self.pieces[selected_pipe] -= 1
 	if (event is InputEventMouseMotion and state == "build"):
 		pass

@@ -38,7 +38,7 @@ func update_texture():
 	
 
 func align_ghost():
-	var bgnode = get_parent().get_node("room1").find_node("BG")
+	var bgnode = get_parent().get_node("level1").find_node("BG")
 	self.global_position = bgnode.map_to_world(bgnode.world_to_map(get_global_mouse_position())) + Vector2(8,8)
 	pass
 
