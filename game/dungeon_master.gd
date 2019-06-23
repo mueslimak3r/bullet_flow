@@ -12,9 +12,9 @@ var offset = Vector2()
 var wave_timer = Timer.new()
 var wave_size = 1
 var wave_delay = 10
-
+var mobs = [ "res://scenes/characters/hell_beast_weak.tscn" , "res://scenes/characters/flying_demon.tscn" , "res://scenes/characters/hell_beast_strong.tscn"] 
 # Called when the node enters the scene tree for the first time.
-func _ready() :
+func _ready() : 
 	wave_timer.connect("timeout", self, "spawn_wave")
 	wave_timer.set_wait_time(wave_delay)
 	add_child(wave_timer)
@@ -34,8 +34,9 @@ func fill_map():
 			set_cell(n - 127, m - 127, 3)
 
 func spawn_wave():
-	var mob = load("res://scenes/characters/flying_demon.tscn")
 	for i in wave_size:
+		randomize()
+		var mob = load(mobs[randi() % mobs.size()])
 		var inst = mob.instance()
 		get_parent().add_child(inst)
 		var source_pos_x = int(offset.x)

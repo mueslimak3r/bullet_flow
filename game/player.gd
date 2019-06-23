@@ -10,7 +10,7 @@ var velocity = Vector2()
 var health = 100
 var player = true
 var pieces = {}
-var in_room
+var in_room = ""
 var state = "combat"
 var selected_pipe = "horizontal"
 
