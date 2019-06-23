@@ -12,7 +12,7 @@ var damage = 10
 var attack_timer = Timer.new()
 var attack_speed = 1
 var attack_range = 100
-var loot_chance = 5
+var loot_chance = 1
 var loot_table = [
 	"horizontal",
 	"vertical",
@@ -66,6 +66,7 @@ func drop_pipe():
 		var inst = pipe.instance()
 		inst.type = loot_table[randi() % 5]
 		get_parent().add_child(inst)
+		inst.position = $KinematicBody2D.global_position
 
 func _on_Area2D_body_entered(body):
 	if (body and "damage" in body.get_parent()):

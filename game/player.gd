@@ -89,6 +89,8 @@ func _input(event):
 				get_parent().add_child(inst)
 				inst.position = get_parent().find_node("BG").map_to_world(get_parent().find_node("BG").world_to_map(get_global_mouse_position()))
 				self.pieces[selected_pipe] -= 1
+	if (event is InputEventMouseMotion and state == "build"):
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

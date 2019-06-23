@@ -6,7 +6,7 @@ extends TileMap
 
 var map = []
 
-var mapsize = 24
+var mapsize = 30
 
 var wave_timer = Timer.new()
 var wave_size = 1
@@ -53,11 +53,9 @@ func spawn_source():
 	var source_pos_y = 0
 	add_child(inst)
 	randomize()
-	while ((source_pos_x % mapsize) == 0):
-		source_pos_x = randi() % mapsize
 	while ((source_pos_y % mapsize) == 0):
 		source_pos_y = randi() % mapsize
-	inst.global_position = map_to_world(Vector2(source_pos_x - (mapsize / 2), source_pos_y - (mapsize / 2)))
+	inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
 
 func gen_square_room():
 	map.resize(mapsize)
