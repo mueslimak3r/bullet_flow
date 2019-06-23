@@ -14,7 +14,7 @@ var wave_size = 1
 var wave_delay = 10
 var neighbors = []
 var mobs = [ "res://scenes/characters/hell_beast_weak.tscn" , "res://scenes/characters/flying_demon.tscn" , "res://scenes/characters/hell_beast_strong.tscn"] 
-
+var spawned_source = false
 # Called when the node enters the scene tree for the first time.
 func _ready() : 
 	wave_timer.connect("timeout", self, "spawn_wave")
@@ -24,7 +24,6 @@ func _ready() :
 	
 	#fill_map()
 	gen_square_room()
-	spawn_source()
 	link_neighbors()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,22 +52,43 @@ func spawn_wave():
 			source_pos_y = randi() % mapsize
 		inst.global_position = map_to_world(Vector2(source_pos_x - (mapsize / 2), source_pos_y - (mapsize / 2)))
 
+func spawn_sink(spawn_inst) :
+	var source = load("res://sink.tscn")
+	var inst = source.instance()
+	var source_pos_x = int(offset.x)
+	var source_pos_y = int(offset.y)
+	randomize()
+	while ((source_pos_y % mapsize) == 0):
+		source_pos_y = randi() % mapsize
+	if !(source_pos_x == mapsize or source_pos_y == mapsize) :
+		source_pos_x = mapsize
+	 #Vector2(offset.x, offset.y) - Vector2(5, 5))
+	#inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
+	get_parent().add_child(inst)
+	inst.global_position = world_to_map(map_to_world(Vector2(-25, 25)))
+	spawn_inst.sink_location = Vector2(mapsize / 2, mapsize / 2) + world_to_map(inst.get_global_position())
+	spawn_inst.start()
+
 func spawn_source():
+	if spawned_source == true :
+		return
+	spawned_source = true
 	var source = load("res://source.tscn")
 	var inst = source.instance()
 	inst.map_x = mapsize
 	inst.map_y = mapsize
 	var source_pos_x = int(offset.x)
 	var source_pos_y = int(offset.y)
-	add_child(inst)
 	randomize()
 	while ((source_pos_y % mapsize) == 0):
 		source_pos_y = randi() % mapsize
-	inst.source_x = source_pos_x
-	inst.source_y = source_pos_y
-	inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
-	get_parent().get_node("pipe_in").global_position = inst.get_global_position()
-	inst.start()
+	if !(source_pos_x == mapsize or source_pos_y == mapsize) :
+		source_pos_x = mapsize
+	 #Vector2(offset.x, offset.y) - Vector2(5, 5))
+	#inst.global_position = map_to_world(Vector2((mapsize - 4) / 2, source_pos_y - (mapsize / 2)))
+	get_parent().add_child(inst)
+	inst.global_position = world_to_map(map_to_world(Vector2(mapsize - 1, source_pos_y - (mapsize / 2))))
+	spawn_sink(inst)
 
 func gen_square_room():
 	map.resize(mapsize)

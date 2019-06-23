@@ -20,7 +20,6 @@ width = 80
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 
 [node name="hud-bg" type="Sprite" parent="Sprite"]
 position = Vector2( 0, 290.196 )
@@ -137,4 +136,25 @@ margin_top = -250.0
 margin_right = -229.0
 margin_bottom = -236.0
 text = "0"
+align = 1
+
+[node name="good job!" type="Label" parent="Sprite"]
+visible = false
+margin_left = -500.059
+margin_top = -84.6128
+margin_right = -292.059
+margin_bottom = -22.6128
+rect_scale = Vector2( 5, 5 )
+text = "good job"
+align = 1
+
+[node name="game over" type="Label" parent="Sprite"]
+visible = false
+margin_left = -500.059
+margin_top = -84.6128
+margin_right = -292.059
+margin_bottom = -22.6128
+rect_scale = Vector2( 5, 5 )
+text = "game over
+"
 align = 1

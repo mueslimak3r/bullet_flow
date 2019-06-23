@@ -64,6 +64,7 @@ func drop_pipe():
 	if (randi() % loot_chance == 0):
 		var pipe = load("res://pipe_piece.tscn")
 		var inst = pipe.instance()
+		randomize()
 		inst.type = loot_table[randi() % 5]
 		inst.ghost = 0
 		get_parent().add_child(inst)

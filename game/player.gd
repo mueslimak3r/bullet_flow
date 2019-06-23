@@ -16,6 +16,7 @@ var selected_pipe = "horizontal"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global.player = self
 	$CanvasLayer.offset = get_viewport().size / 2
 	pieces.horizontal = 0
 	pieces.top_left = 0
@@ -77,10 +78,12 @@ func _input(event):
 			get_parent().add_child(inst)
 			inst.position = $KinematicBody2D.position
 			inst.targetpos = get_global_mouse_position()
+			var pipe_in = get_parent().get_node(in_room).get_node("pipe_in")
+			#print(pipe_in.connect_pipe(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position())))
 		if (state == "build" and health > 0):
 			if (self.pieces[selected_pipe] > 0):
 				var _position = get_parent().get_node("level1").find_node("BG").map_to_world(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position())) + Vector2(8,8)
-				if !(get_parent().get_node(in_room).get_node("pipe_in").connect_pipe(_position)) :
+				if !(get_parent().get_node(in_room).get_node("pipe_in").connect_pipe(get_parent().get_node("level1").find_node("BG").world_to_map(get_global_mouse_position()), selected_pipe)) :
 					return
 				var pipe = load("res://pipe_piece.tscn")
 				var inst = pipe.instance()
@@ -95,6 +98,10 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if anim == "die" :
+		health = 100
+		global.player.get_node("CanvasLayer").get_node("Sprite/game over").set_visible(false)
+		$KinematicBody2D.set_global_position(Vector2(1, 1))
 	get_input()
 	update_ui()
 	if (flip):
@@ -106,6 +113,7 @@ func _process(delta):
 			anim = "default"
 		else:
 			anim = "die"
+			global.player.get_node("CanvasLayer").get_node("Sprite/game over").set_visible(true)
 	$KinematicBody2D/AnimatedSprite.play(anim)
 	velocity = $KinematicBody2D.move_and_slide(velocity)
 	var pipenode = get_parent().find_node("ghost_pipe")
