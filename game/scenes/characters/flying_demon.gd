@@ -32,7 +32,7 @@ func _ready():
 	attack_timer.start()
 
 func attack():
-	var player_node = get_parent().find_node("player").find_node("KinematicBody2D")
+	var player_node = get_parent().get_parent().find_node("player").find_node("KinematicBody2D")
 	var pos = player_node.position
 	if ((pos - $KinematicBody2D.global_position).length() <= attack_range && player_node.get_parent().health > 0):
 		player_node.get_parent().health -= 15
@@ -42,7 +42,7 @@ func attack():
 	pass
 
 func seek_player() :
-	var player_node = get_parent().find_node("player").find_node("KinematicBody2D")
+	var player_node = get_parent().get_parent().find_node("player").find_node("KinematicBody2D")
 	var pos = player_node.position
 	velocity = (pos - $KinematicBody2D.global_position).normalized() * speed
 	if (pos - $KinematicBody2D.global_position).length() > (attack_range * 0.75):
@@ -54,7 +54,7 @@ func _process(delta):
 	if (health <= 0):
 		drop_pipe()
 		queue_free()
-	if (global_position.x < get_parent().find_node("player").find_node("KinematicBody2D").position.x):
+	if (global_position.x < get_parent().get_parent().find_node("player").find_node("KinematicBody2D").position.x):
 		$KinematicBody2D/AnimatedSprite.flip_h = true
 	else:
 		$KinematicBody2D/AnimatedSprite.flip_h = false

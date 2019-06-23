@@ -13,7 +13,7 @@ var wave_size = 1
 var wave_delay = 10
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() :
 	wave_timer.connect("timeout", self, "spawn_wave")
 	wave_timer.set_wait_time(wave_delay)
 	add_child(wave_timer)
