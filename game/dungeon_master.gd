@@ -37,8 +37,9 @@ func fill_map():
 			set_cell(n - 127, m - 127, 3)
 
 func spawn_wave():
-	var mob = load("res://scenes/characters/flying_demon.tscn")
 	for i in wave_size:
+		randomize()
+		var mob = load(mobs[randi() % mobs.size()])
 		var inst = mob.instance()
 		get_parent().add_child(inst)
 		var source_pos_x = int(offset.x)
