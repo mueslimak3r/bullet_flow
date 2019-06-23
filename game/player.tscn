@@ -1,77 +1,78 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/walk-down/walk-down-3.png" type="Texture" id=2]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-1.png" type="Texture" id=3]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-2.png" type="Texture" id=4]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-3.png" type="Texture" id=5]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-4.png" type="Texture" id=6]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-5.png" type="Texture" id=7]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-6.png" type="Texture" id=8]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-7.png" type="Texture" id=9]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-8.png" type="Texture" id=10]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-1.png" type="Texture" id=11]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-2.png" type="Texture" id=12]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-3.png" type="Texture" id=13]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-4.png" type="Texture" id=14]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-5.png" type="Texture" id=15]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-6.png" type="Texture" id=16]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-7.png" type="Texture" id=17]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-8.png" type="Texture" id=18]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-down.png" type="Texture" id=19]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-up.png" type="Texture" id=20]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-side.png" type="Texture" id=21]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-1.png" type="Texture" id=22]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-2.png" type="Texture" id=23]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-3.png" type="Texture" id=24]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-4.png" type="Texture" id=25]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-1.png" type="Texture" id=26]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-2.png" type="Texture" id=27]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-3.png" type="Texture" id=28]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-4.png" type="Texture" id=29]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-5.png" type="Texture" id=30]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-6.png" type="Texture" id=31]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-7.png" type="Texture" id=32]
-[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-8.png" type="Texture" id=33]
+[ext_resource path="res://CanvasLayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/walk-down/walk-down-3.png" type="Texture" id=3]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-1.png" type="Texture" id=4]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-2.png" type="Texture" id=5]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-3.png" type="Texture" id=6]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-4.png" type="Texture" id=7]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-5.png" type="Texture" id=8]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-6.png" type="Texture" id=9]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-7.png" type="Texture" id=10]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-up/run-up-8.png" type="Texture" id=11]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-1.png" type="Texture" id=12]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-2.png" type="Texture" id=13]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-3.png" type="Texture" id=14]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-4.png" type="Texture" id=15]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-5.png" type="Texture" id=16]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-6.png" type="Texture" id=17]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-7.png" type="Texture" id=18]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-down/run-down-8.png" type="Texture" id=19]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-down.png" type="Texture" id=20]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-up.png" type="Texture" id=21]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/push/push-side.png" type="Texture" id=22]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-1.png" type="Texture" id=23]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-2.png" type="Texture" id=24]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-3.png" type="Texture" id=25]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/faint/faint-4.png" type="Texture" id=26]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-1.png" type="Texture" id=27]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-2.png" type="Texture" id=28]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-3.png" type="Texture" id=29]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-4.png" type="Texture" id=30]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-5.png" type="Texture" id=31]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-6.png" type="Texture" id=32]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-7.png" type="Texture" id=33]
+[ext_resource path="res://art/legend of faune files/Sprites/Player/sprites/run-side/run-side-8.png" type="Texture" id=34]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "run_up",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "run_down",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 19 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "dig_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
 "name": "dig_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
+"frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "dig_side",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": false,
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "run_side",
 "speed": 15.0
@@ -81,6 +82,8 @@ animations = [ {
 
 [node name="player" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 collision_layer = 4
@@ -92,3 +95,7 @@ frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+smoothing_enabled = true

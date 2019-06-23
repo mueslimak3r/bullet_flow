@@ -17,9 +17,6 @@ var selected_pipe = "horizontal"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CanvasLayer.offset = get_viewport().size / 2
-	var node = $Camera2D
-	remove_child(node)
-	$KinematicBody2D.add_child(node)
 	pieces.horizontal = 0
 	pieces.top_left = 0
 	pieces.top_right = 0
