@@ -35,6 +35,7 @@ func update_texture():
 		$Sprite.texture = tr_tex
 	if (ghost == 1):
 		$Sprite.modulate = Color(1,1,1,0.5)
+		$Area2D.set_collision_mask(2^6)
 	
 
 func align_ghost():
